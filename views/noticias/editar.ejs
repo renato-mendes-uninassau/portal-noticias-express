@@ -1,0 +1,23 @@
+<%- include('../partials/admin_header', { titulo: titulo }) %>
+
+<section>
+  <h1><%= titulo %></h1>
+  <form action="/admin/noticias/editar/<%= noticia.id %>" method="post">
+    <label for="titulo">Título</label>
+    <input id="titulo" name="titulo" value="<%= noticia.titulo %>" required />
+
+    <label for="id_categoria">Categoria</label>
+    <select name="id_categoria" id="id_categoria">
+      <% categorias.forEach(c => { %>
+        <option value="<%= c.id %>" <%= (c.id === noticia.id_categoria) ? 'selected' : '' %>><%= c.nome %></option>
+      <% }) %>
+    </select>
+
+    <label for="conteudo">Conteúdo</label>
+    <textarea id="conteudo" name="conteudo" rows="10" required><%= noticia.conteudo %></textarea>
+
+    <button type="submit">Salvar</button>
+  </form>
+</section>
+
+<%- include('../partials/admin_footer') %>

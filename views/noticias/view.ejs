@@ -1,0 +1,13 @@
+<%- include('../partials/header', { titulo: noticia.titulo }) %>
+
+<article class="noticia-completa">
+  <h1><%= noticia.titulo %></h1>
+  <p class="meta">
+    Por <%= noticia.autor %> — <%= new
+    Date(noticia.data_publicacao).toLocaleString() %>
+  </p>
+  <div class="conteudo"><%= noticia.conteudo %></div>
+  <p><a href="/">Voltar</a></p>
+</article>
+
+<%- include('../partials/footer') %>

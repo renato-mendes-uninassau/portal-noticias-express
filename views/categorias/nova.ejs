@@ -1,0 +1,12 @@
+<%- include('../partials/admin_header', { titulo: titulo }) %>
+
+<section>
+  <h1><%= titulo %></h1>
+  <form action="/admin/categorias/nova" method="post">
+    <label for="nome">Nome</label>
+    <input id="nome" name="nome" required />
+    <button type="submit">Criar</button>
+  </form>
+</section>
+
+<%- include('../partials/admin_footer') %>

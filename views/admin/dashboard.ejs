@@ -1,0 +1,23 @@
+<%- include('../partials/admin_header', { titulo: titulo }) %>
+
+<section class="dashboard">
+  <h1><%= titulo || 'Dashboard' %></h1>
+  <div class="cards">
+    <div class="card">
+      <h3>Notícias</h3>
+      <p><a href="/admin/noticias">Gerenciar notícias</a></p>
+    </div>
+    <div class="card">
+      <h3>Categorias</h3>
+      <p><a href="/admin/categorias">Gerenciar categorias</a></p>
+    </div>
+    <% if (usuario && usuario.perfil === 'admin') { %>
+    <div class="card">
+      <h3>Usuários</h3>
+      <p><a href="/admin/usuarios">Gerenciar usuários</a></p>
+    </div>
+    <% } %>
+  </div>
+</section>
+
+<%- include('../partials/admin_footer') %>

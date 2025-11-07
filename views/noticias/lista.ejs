@@ -1,0 +1,41 @@
+<%- include('../partials/admin_header', { titulo: titulo }) %>
+
+<section>
+  <h1><%= titulo %></h1>
+  <p><a href="/admin/noticias/nova" class="btn">Nova notícia</a></p>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Título</th>
+        <th>Autor</th>
+        <th>Data</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% noticias.forEach(n => { %>
+      <tr>
+        <td><%= n.id %></td>
+        <td><%= n.titulo %></td>
+        <td><%= n.autor %></td>
+        <td><%= new Date(n.data_publicacao).toLocaleString() %></td>
+        <td>
+          <a href="/admin/noticias/editar/<%= n.id %>">Editar</a>
+          <form
+            action="/admin/noticias/deletar/<%= n.id %>"
+            method="post"
+            style="display: inline"
+          >
+            <button type="submit" onclick="return confirm('Remover?')">
+              Remover
+            </button>
+          </form>
+        </td>
+      </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</section>
+
+<%- include('../partials/admin_footer') %>

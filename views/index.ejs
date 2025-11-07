@@ -1,0 +1,30 @@
+<%- include('partials/header', { titulo: titulo }) %>
+
+<section class="noticias-grid">
+  <h1 class="hero-title"><%= titulo %></h1>
+  <% if (noticias.length === 0) { %>
+  <p>Nenhuma notícia encontrada.</p>
+  <% } else { %>
+  <div class="news-cards">
+    <% noticias.forEach(n => { %>
+    <article class="news-card">
+      <h2 class="news-title">
+        <a href="/noticia/<%= n.id %>"><%= n.titulo %></a>
+      </h2>
+      <p class="news-meta">
+        <span class="author">Por <%= n.autor %></span> •
+        <span class="date"
+          ><%= new Date(n.data_publicacao).toLocaleDateString('pt-BR') %></span
+        >
+        •
+        <span class="category"><%= n.categoria %></span>
+      </p>
+      <p class="news-excerpt"><%= n.resumo %>...</p>
+      <a href="/noticia/<%= n.id %>" class="read-more">Ler mais →</a>
+    </article>
+    <% }) %>
+  </div>
+  <% } %>
+</section>
+
+<%- include('partials/footer') %>

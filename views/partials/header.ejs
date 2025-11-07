@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title><%= titulo || 'Portal de Notícias' %></title>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <div class="brand"><a href="/">Portal Notícias</a></div>
+        <div class="topnav">
+          <a href="/">Home</a>
+          <% if (!usuario) { %>
+          <a href="/login">Login</a>
+          <% } else { %>
+          <a href="/admin/noticias">Admin Notícias</a>
+          <% if (usuario.perfil === 'admin') { %>
+          <a href="/admin/usuarios">Usuários</a>
+          <% } %>
+          <a href="/admin/categorias">Categorias</a>
+          <a href="/logout">Logout (<%= usuario.nome %>)</a>
+          <% } %>
+        </div>
+      </div>
+    </header>
+
+    <main class="container">
+      <% if (mensagem) { %>
+      <div class="mensagem <%= mensagem.tipo %>"><%= mensagem.texto %></div>
+      <% } %>
+    </main>
+  </body>
+</html>
